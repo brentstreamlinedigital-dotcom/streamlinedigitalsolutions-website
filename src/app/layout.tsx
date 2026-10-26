@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  verification: {
+    other: {
+      "msvalidate.01": "F89692437D14CC37D89D336DEC7DF860",
+    },
+  },
 };
 
 export default function RootLayout({
