@@ -60,7 +60,7 @@ export default function HomePage() {
 
               {/* Body Copy */}
               <p className="mt-6 text-lg md:text-xl text-paper/70 max-w-lg leading-relaxed font-light">
-                We build, market and automate online stores. AI does the heavy lifting, you keep the margin.
+                We build, market and automate online stores. We do the heavy lifting, you keep the margin.
               </p>
 
               {/* Action Button */}

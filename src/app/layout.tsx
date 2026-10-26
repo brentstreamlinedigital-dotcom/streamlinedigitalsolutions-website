@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Streamline Digital Solutions",
   },
   description:
-    "We build, market and automate online stores. AI does the heavy lifting, you keep the margin. Cape Town based, scaling stores worldwide.",
+    "We build, market and automate online stores. We do the heavy lifting, you keep the margin. Cape Town based, scaling stores worldwide.",
   metadataBase: new URL("https://streamlinedigitalsolutions.com"),
   openGraph: {
     type: "website",
