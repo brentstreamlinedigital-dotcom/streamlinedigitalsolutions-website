@@ -3,6 +3,8 @@ import { cases } from "@/content/cases";
 import { services } from "@/content/services";
 import { blogPosts } from "@/content/blog";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://streamlinedigitalsolutions.com";
 
