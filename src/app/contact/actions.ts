@@ -44,7 +44,7 @@ export async function submitContactLead(formData: FormData) {
     const { firstName, lastName, email, storeUrl, company, services, budget, message } = parsed.data;
 
     let delivered = false;
-    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@streamlinedigitalsolutions.com";
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "brent@streamlinedigitalsolutions.com";
 
     // 1. Store lead in Supabase if configured
     const supabaseUrl = process.env.SUPABASE_URL;
@@ -121,15 +121,35 @@ ${message}
       return { success: true };
     }
 
-    // If neither backend service is configured or operational, do not pretend it succeeded
+    const mailtoSubject = encodeURIComponent(
+      `New Growth Inquiry: ${firstName} ${lastName}${company ? ` (${company})` : ""}`
+    );
+    const mailtoBody = encodeURIComponent(
+      `Hi Brent,
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Company: ${company || "N/A"}
+Store URL: ${storeUrl || "N/A"}
+Budget: ${budget || "N/A"}
+Services: ${services.join(", ") || "None specified"}
+
+Message:
+${message}`
+    );
+    const mailtoUrl = `mailto:${contactEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+    // If neither backend service is configured or operational, provide immediate fallback
     return {
       success: false,
-      message: `Direct messaging service is momentarily unconfigured or unavailable. Please email us directly at ${contactEmail}.`,
+      unconfigured: !supabaseKey && !resendApiKey,
+      mailtoUrl,
+      message: `Direct messaging service is currently connecting to our inbox. Click below to send your message directly to Brent:`,
     };
   } catch {
     return {
       success: false,
-      message: "An unexpected error occurred. Please try again or email us directly.",
+      message: "An unexpected error occurred. Please try again or email us directly at brent@streamlinedigitalsolutions.com.",
     };
   }
 }

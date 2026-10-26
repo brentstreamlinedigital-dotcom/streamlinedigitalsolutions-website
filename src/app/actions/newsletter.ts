@@ -14,6 +14,9 @@ export async function subscribeNewsletter(name: string, email: string) {
       return { success: false, error: "Please enter a valid email address." };
     }
 
+    let delivered = false;
+
+    // 1. Store in Supabase if configured
     const supabaseUrl = process.env.SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -34,17 +37,49 @@ export async function subscribeNewsletter(name: string, email: string) {
         });
 
         if (res.ok) {
-          return { success: true };
+          delivered = true;
         }
       } catch {
-        // Fall through to error
+        // Fall through
       }
     }
 
-    // If Supabase is unconfigured, return actionable message
+    // 2. Send email notification via Resend if configured
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "brent@streamlinedigitalsolutions.com";
+
+    if (resendApiKey && resendApiKey !== "your_resend_api_key") {
+      try {
+        const emailRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${resendApiKey}`,
+          },
+          body: JSON.stringify({
+            from: "Streamline Newsletter <newsletter@streamlinedigitalsolutions.com>",
+            to: [contactEmail],
+            subject: `New Newsletter Subscriber: ${parsed.data.name || "Subscriber"} (${parsed.data.email})`,
+            text: `A new user joined the newsletter list:\n\nName: ${parsed.data.name || "N/A"}\nEmail: ${parsed.data.email}\nDate: ${new Date().toISOString()}`,
+          }),
+        });
+
+        if (emailRes.ok) {
+          delivered = true;
+        }
+      } catch {
+        // Fall through
+      }
+    }
+
+    if (delivered) {
+      return { success: true };
+    }
+
+    // If neither backend is configured, return actionable error
     return {
       success: false,
-      error: "Subscription service is currently undergoing setup. Please email us directly.",
+      error: `Subscription service is currently undergoing setup. Please email us directly at ${contactEmail}.`,
     };
   } catch {
     return { success: false, error: "Failed to subscribe. Please try again." };

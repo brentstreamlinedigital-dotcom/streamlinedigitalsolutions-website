@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { NAV_LINKS, CONTACT_EMAIL, SOCIAL_LINKS, BOOKING_URL } from "@/lib/constants";
+import { NAV_LINKS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW, SOCIAL_LINKS, BOOKING_URL } from "@/lib/constants";
 
 interface MenuOverlayProps {
   isOpen: boolean;
@@ -95,12 +95,20 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
         <div className="lg:w-80 flex flex-col gap-8 mt-12 lg:mt-0 lg:justify-center">
           <div>
             <p className="font-label text-xs text-accent mb-3">CONTACT</p>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-paper/70 hover:text-paper transition-colors text-sm"
-            >
-              {CONTACT_EMAIL}
-            </a>
+            <div className="flex flex-col gap-1.5">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="text-paper/70 hover:text-paper transition-colors text-sm"
+              >
+                {CONTACT_EMAIL}
+              </a>
+              <a
+                href={`tel:${CONTACT_PHONE_RAW}`}
+                className="text-paper/70 hover:text-paper transition-colors text-sm"
+              >
+                {CONTACT_PHONE}
+              </a>
+            </div>
           </div>
 
           <div>

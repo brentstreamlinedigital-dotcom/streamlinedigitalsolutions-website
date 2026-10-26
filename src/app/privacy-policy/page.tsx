@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-xl font-medium text-ink">5. Your rights</h2>
           <p>
-            Under POPIA and GDPR, you have the right to access, correct, delete, or port your personal data. You may also object to or restrict processing. To exercise these rights, contact us at hello@streamlinedigitalsolutions.com.
+            Under POPIA and GDPR, you have the right to access, correct, delete, or port your personal data. You may also object to or restrict processing. To exercise these rights, contact us at brent@streamlinedigitalsolutions.com.
           </p>
 
           <h2 className="text-xl font-medium text-ink">6. Cookies</h2>
@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-xl font-medium text-ink">7. Contact</h2>
           <p>
-            For privacy-related enquiries, contact Streamline Digital Solutions at hello@streamlinedigitalsolutions.com, Cape Town, South Africa.
+            For privacy-related enquiries, contact Streamline Digital Solutions at brent@streamlinedigitalsolutions.com, Cape Town, South Africa.
           </p>
 
           <p className="text-sm text-grey-400 mt-12">

@@ -15,7 +15,9 @@ export const SOCIAL_LINKS = [
   { label: "GitHub", href: "https://github.com/streamlinedigital", icon: "github" },
 ] as const;
 
-export const CONTACT_EMAIL = "hello@streamlinedigitalsolutions.com";
+export const CONTACT_EMAIL = "brent@streamlinedigitalsolutions.com";
+export const CONTACT_PHONE = "+27 67 549 9364";
+export const CONTACT_PHONE_RAW = "+27675499364";
 export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "/contact";
 export const SITE_URL = "https://streamlinedigitalsolutions.com";
 export const SITE_NAME = "Streamline Digital Solutions";

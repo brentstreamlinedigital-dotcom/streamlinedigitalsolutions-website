@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
-import { CONTACT_EMAIL, SOCIAL_LINKS, BOOKING_URL } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW, SOCIAL_LINKS, BOOKING_URL } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 import { submitContactLead } from "./actions";
 import HeroCanvas from "@/components/canvas/HeroCanvas";
@@ -32,6 +32,7 @@ export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [mailtoUrl, setMailtoUrl] = useState<string | null>(null);
 
   function toggleService(service: string) {
     setSelectedServices((prev) =>
@@ -44,6 +45,7 @@ export default function ContactPage() {
     setFormState("submitting");
     setFieldErrors({});
     setErrorMessage("");
+    setMailtoUrl(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -67,6 +69,9 @@ export default function ContactPage() {
       }
       if (result.message) {
         setErrorMessage(result.message);
+      }
+      if (result.mailtoUrl) {
+        setMailtoUrl(result.mailtoUrl);
       }
     }
   }
@@ -95,6 +100,16 @@ export default function ContactPage() {
                     className="text-paper/70 hover:text-paper transition-colors"
                   >
                     {CONTACT_EMAIL}
+                  </a>
+                </div>
+
+                <div>
+                  <p className="font-label text-xs text-accent mb-2">PHONE</p>
+                  <a
+                    href={`tel:${CONTACT_PHONE_RAW}`}
+                    className="text-paper/70 hover:text-paper transition-colors"
+                  >
+                    {CONTACT_PHONE}
                   </a>
                 </div>
 
@@ -154,8 +169,18 @@ export default function ContactPage() {
                   />
 
                   {errorMessage && (
-                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded text-red-400 text-xs font-label">
-                      {errorMessage}
+                    <div className="p-4 bg-accent/10 border border-accent/30 rounded-xl text-paper text-xs space-y-3">
+                      <p className="text-paper/90 leading-relaxed font-sans">{errorMessage}</p>
+                      {mailtoUrl && (
+                        <div className="pt-1">
+                          <a
+                            href={mailtoUrl}
+                            className="inline-flex items-center gap-2 bg-accent text-ink font-semibold text-xs tracking-wider uppercase px-4 py-2.5 rounded-lg hover:bg-accent/90 transition-colors"
+                          >
+                            <span>Open in Email Client to Send Directly &rarr;</span>
+                          </a>
+                        </div>
+                      )}
                     </div>
                   )}
 

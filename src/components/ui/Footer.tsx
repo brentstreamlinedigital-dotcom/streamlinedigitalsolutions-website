@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { subscribeNewsletter } from "@/app/actions/newsletter";
-import { NAV_LINKS, CONTACT_EMAIL, SOCIAL_LINKS, SITE_NAME } from "@/lib/constants";
+import { NAV_LINKS, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_RAW, SOCIAL_LINKS, SITE_NAME } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
@@ -94,6 +94,12 @@ export default function Footer() {
               className="text-paper/60 hover:text-paper transition-colors text-sm"
             >
               {CONTACT_EMAIL}
+            </a>
+            <a
+              href={`tel:${CONTACT_PHONE_RAW}`}
+              className="text-paper/60 hover:text-paper transition-colors text-sm"
+            >
+              {CONTACT_PHONE}
             </a>
             <div className="flex gap-4 mt-2">
               {SOCIAL_LINKS.map((social) => (

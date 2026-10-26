@@ -71,6 +71,8 @@ export default function RootLayout({
               name: "Streamline Digital Solutions",
               url: "https://streamlinedigitalsolutions.com",
               logo: "https://streamlinedigitalsolutions.com/logo.svg",
+              email: "brent@streamlinedigitalsolutions.com",
+              telephone: "+27 67 549 9364",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Cape Town",
@@ -92,6 +94,8 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "Streamline Digital Solutions",
               url: "https://streamlinedigitalsolutions.com",
+              email: "brent@streamlinedigitalsolutions.com",
+              telephone: "+27 67 549 9364",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Cape Town",

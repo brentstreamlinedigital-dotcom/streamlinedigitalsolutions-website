@@ -44,7 +44,7 @@ export default function TermsPage() {
 
           <h2 className="text-xl font-medium text-ink">6. Contact</h2>
           <p>
-            For questions about these terms, contact Streamline Digital Solutions at hello@streamlinedigitalsolutions.com.
+            For questions about these terms, contact Streamline Digital Solutions at brent@streamlinedigitalsolutions.com.
           </p>
 
           <p className="text-sm text-grey-400 mt-12">

@@ -56,7 +56,8 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 RESEND_API_KEY=re_xxxxxxxxxxxx
 
 # Public config
-NEXT_PUBLIC_CONTACT_EMAIL=hello@streamlinedigitalsolutions.com
+NEXT_PUBLIC_CONTACT_EMAIL=brent@streamlinedigitalsolutions.com
+NEXT_PUBLIC_CONTACT_PHONE="+27 67 549 9364"
 NEXT_PUBLIC_BOOKING_URL=https://calendly.com/streamline-digital
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
