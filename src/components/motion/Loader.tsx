@@ -71,28 +71,6 @@ export default function Loader() {
       <p className="font-label text-[11px] tracking-widest text-accent mt-4 animate-pulse">
         STREAMLINE
       </p>
-
-      <style>{`
-        .loader-stroke {
-          stroke-dasharray: 60;
-          stroke-dashoffset: 60;
-          animation: drawStroke 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-        }
-        .loader-stroke-1 {
-          animation-delay: 0.05s;
-        }
-        .loader-stroke-2 {
-          animation-delay: 0.25s;
-        }
-        .loader-stroke-3 {
-          animation-delay: 0.45s;
-        }
-        @keyframes drawStroke {
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 }

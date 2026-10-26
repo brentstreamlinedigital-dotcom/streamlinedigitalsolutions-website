@@ -22,17 +22,19 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
 
     lenisRef.current = lenis;
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Add lenis class to html element for CSS hooks
     document.documentElement.classList.add("lenis", "lenis-smooth");
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       document.documentElement.classList.remove("lenis", "lenis-smooth");
     };
