@@ -19,7 +19,7 @@ export async function subscribeNewsletter(name: string, email: string) {
 
     if (supabaseUrl && supabaseKey && supabaseUrl !== "your_supabase_project_url") {
       try {
-        await fetch(`${supabaseUrl}/rest/v1/subscribers`, {
+        const res = await fetch(`${supabaseUrl}/rest/v1/subscribers`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,13 +32,21 @@ export async function subscribeNewsletter(name: string, email: string) {
             email: parsed.data.email,
           }),
         });
-      } catch (err) {
-        // Log internally without breaking UI response
+
+        if (res.ok) {
+          return { success: true };
+        }
+      } catch {
+        // Fall through to error
       }
     }
 
-    return { success: true };
-  } catch (error) {
+    // If Supabase is unconfigured, return actionable message
+    return {
+      success: false,
+      error: "Subscription service is currently undergoing setup. Please email us directly.",
+    };
+  } catch {
     return { success: false, error: "Failed to subscribe. Please try again." };
   }
 }

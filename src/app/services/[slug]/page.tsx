@@ -56,6 +56,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   if (!service) {
     notFound();
+    return null;
   }
 
   const relatedCaseStudy = service.relatedCase
@@ -74,7 +75,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           "@type": "Organization",
           name: "Streamline Digital Solutions",
           url: "https://streamlinedigitalsolutions.com",
-          logo: "https://streamlinedigitalsolutions.com/branding/logobgless.png",
+          logo: "https://streamlinedigitalsolutions.com/logo.svg",
           areaServed: ["Global", "South Africa", "United States", "United Kingdom"],
         },
         serviceType: service.title,

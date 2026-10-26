@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
 import { CONTACT_EMAIL, SOCIAL_LINKS, BOOKING_URL } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 import { submitContactLead } from "./actions";
 import HeroCanvas from "@/components/canvas/HeroCanvas";
 
@@ -55,6 +56,10 @@ export default function ContactPage() {
 
     if (result.success) {
       setFormState("success");
+      trackEvent("generate_lead", {
+        form_name: "contact_page",
+        services: selectedServices.join(", "),
+      });
     } else {
       setFormState("error");
       if (result.errors) {
@@ -292,6 +297,7 @@ export default function ContactPage() {
 
                   <Button
                     type="submit"
+                    disabled={formState === "submitting"}
                     label={formState === "submitting" ? "SENDING..." : "SEND MESSAGE"}
                   />
                 </form>

@@ -43,13 +43,16 @@ export async function submitContactLead(formData: FormData) {
 
     const { firstName, lastName, email, storeUrl, company, services, budget, message } = parsed.data;
 
+    let delivered = false;
+    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@streamlinedigitalsolutions.com";
+
     // 1. Store lead in Supabase if configured
     const supabaseUrl = process.env.SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (supabaseUrl && supabaseKey && supabaseUrl !== "your_supabase_project_url") {
       try {
-        await fetch(`${supabaseUrl}/rest/v1/leads`, {
+        const sbRes = await fetch(`${supabaseUrl}/rest/v1/leads`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -68,18 +71,21 @@ export async function submitContactLead(formData: FormData) {
             message,
           }),
         });
-      } catch (err) {
-        // Fallback error logging without crashing user response
+
+        if (sbRes.ok) {
+          delivered = true;
+        }
+      } catch {
+        // Log silently
       }
     }
 
     // 2. Send email via Resend if configured
     const resendApiKey = process.env.RESEND_API_KEY;
-    const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@streamlinedigitalsolutions.com";
 
     if (resendApiKey && resendApiKey !== "your_resend_api_key") {
       try {
-        await fetch("https://api.resend.com/emails", {
+        const emailRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -102,13 +108,25 @@ ${message}
             `.trim(),
           }),
         });
-      } catch (err) {
-        // Fallback error logging without crashing user response
+
+        if (emailRes.ok) {
+          delivered = true;
+        }
+      } catch {
+        // Log silently
       }
     }
 
-    return { success: true };
-  } catch (error) {
+    if (delivered) {
+      return { success: true };
+    }
+
+    // If neither backend service is configured or operational, do not pretend it succeeded
+    return {
+      success: false,
+      message: `Direct messaging service is momentarily unconfigured or unavailable. Please email us directly at ${contactEmail}.`,
+    };
+  } catch {
     return {
       success: false,
       message: "An unexpected error occurred. Please try again or email us directly.",

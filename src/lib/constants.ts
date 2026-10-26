@@ -16,6 +16,6 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const CONTACT_EMAIL = "hello@streamlinedigitalsolutions.com";
-export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "#book-a-call";
+export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || "/contact";
 export const SITE_URL = "https://streamlinedigitalsolutions.com";
 export const SITE_NAME = "Streamline Digital Solutions";

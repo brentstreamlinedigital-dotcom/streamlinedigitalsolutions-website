@@ -72,7 +72,7 @@ export default function Loader() {
         STREAMLINE
       </p>
 
-      <style jsx>{`
+      <style>{`
         .loader-stroke {
           stroke-dasharray: 60;
           stroke-dashoffset: 60;

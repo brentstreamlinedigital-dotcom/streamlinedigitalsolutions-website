@@ -22,9 +22,29 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   const caseStudy = cases.find((c) => c.slug === slug);
   if (!caseStudy) return { title: "Case Study Not Found" };
 
+  const canonicalUrl = `https://streamlinedigitalsolutions.com/work/${caseStudy.slug}`;
+  const ogImage = caseStudy.heroImage || caseStudy.thumbnail;
+
   return {
     title: `${caseStudy.title} Case Study | Streamline Digital Solutions`,
     description: caseStudy.tagline,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${caseStudy.title} — Ecommerce Case Study`,
+      description: caseStudy.tagline,
+      url: canonicalUrl,
+      type: "article",
+      siteName: "Streamline Digital Solutions",
+      images: ogImage ? [{ url: ogImage, alt: caseStudy.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${caseStudy.title} — Ecommerce Case Study`,
+      description: caseStudy.tagline,
+      images: ogImage ? [ogImage] : undefined,
+    },
   };
 }
 
@@ -32,7 +52,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
   const caseStudy = cases.find((c) => c.slug === slug);
 
-  if (!caseStudy) notFound();
+  if (!caseStudy) {
+    notFound();
+    return null;
+  }
 
   const currentIndex = cases.findIndex((c) => c.slug === slug);
   const nextCase = cases[(currentIndex + 1) % cases.length];

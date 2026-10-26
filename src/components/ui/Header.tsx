@@ -22,8 +22,6 @@ export default function Header() {
     const header = headerRef.current;
     if (!header) return;
 
-    const observer = new IntersectionObserver(() => {}, { threshold: 0 });
-
     // Check sections with data-theme for header tinting
     function checkTheme() {
       if (!header) return;
@@ -47,7 +45,6 @@ export default function Header() {
 
     return () => {
       window.removeEventListener("scroll", checkTheme);
-      observer.disconnect();
     };
   }, [pathname]);
 
@@ -96,6 +93,7 @@ export default function Header() {
             className="font-sans font-semibold text-xs uppercase flex items-center gap-2 tracking-wider cursor-pointer px-3 py-1.5 rounded hover:bg-paper/10 transition-colors"
             aria-expanded={menuOpen}
             aria-controls="menu-overlay"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             <span>{menuOpen ? "CLOSE" : "MENU"}</span>
             <span className="flex flex-col gap-[3px] w-4">

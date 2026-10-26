@@ -59,6 +59,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   if (!post) {
     notFound();
+    return null;
   }
 
   const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);

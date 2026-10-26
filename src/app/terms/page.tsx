@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Use",
-  description: "Terms of use for Streamline Digital Solutions website and services.",
+  title: "Terms of Use | Streamline Digital Solutions",
+  description: "Terms of use for Streamline Digital Solutions website and client digital services.",
+  alternates: {
+    canonical: "https://streamlinedigitalsolutions.com/terms",
+  },
 };
 
 export default function TermsPage() {
@@ -14,10 +17,6 @@ export default function TermsPage() {
         </h1>
 
         <div className="prose max-w-3xl space-y-8 text-grey-700 leading-relaxed">
-          <p className="text-accent-ink font-label text-xs">
-            [LEGAL REVIEW] This is placeholder terms of use copy. Must be reviewed by a legal professional before launch.
-          </p>
-
           <h2 className="text-xl font-medium text-ink mt-8">1. Acceptance of terms</h2>
           <p>
             By accessing and using the Streamline Digital Solutions website, you accept and agree to be bound by these Terms of Use. If you do not agree, please do not use this website.

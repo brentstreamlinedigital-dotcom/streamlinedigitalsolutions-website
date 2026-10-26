@@ -35,7 +35,7 @@ export default function RouteTransition() {
       aria-hidden="true"
     >
       <div className="absolute inset-0 bg-accent route-wipe-panel" />
-      <style jsx>{`
+      <style>{`
         .route-wipe-panel {
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           animation: diagonalWipe 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;

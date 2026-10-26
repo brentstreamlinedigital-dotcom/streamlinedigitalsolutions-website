@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { subscribeNewsletter } from "@/app/actions/newsletter";
 import { NAV_LINKS, CONTACT_EMAIL, SOCIAL_LINKS, SITE_NAME } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Footer() {
   const [name, setName] = useState("");
@@ -21,6 +22,7 @@ export default function Footer() {
     setSubscribing(false);
     if (res.success) {
       setSubscribed(true);
+      trackEvent("sign_up", { form_name: "footer_newsletter" });
       setName("");
       setEmail("");
     } else {
@@ -108,7 +110,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Legal + hints */}
+          {/* Legal */}
           <div className="flex flex-col gap-3">
             <p className="font-label text-xs text-accent mb-2">LEGAL</p>
             <Link href="/privacy-policy" className="text-paper/60 hover:text-paper transition-colors text-sm">
@@ -117,9 +119,6 @@ export default function Footer() {
             <Link href="/terms" className="text-paper/60 hover:text-paper transition-colors text-sm">
               Terms of Use
             </Link>
-            <p className="text-paper/30 text-xs mt-4 font-mono">
-              ⌘G grid
-            </p>
           </div>
         </div>
 

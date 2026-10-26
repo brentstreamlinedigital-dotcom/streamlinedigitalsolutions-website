@@ -1,3 +1,31 @@
-# Cloudflare Edge Caching Headers for Next.js Static Assets
+# Cloudflare Edge Headers for Streamline Digital Solutions
+
+# Global Security Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Immutable Next.js Static Bundles
 /_next/static/*
   cache-control: public, max-age=31536000, immutable
+
+# Fonts
+/fonts/*
+  cache-control: public, max-age=31536000, immutable
+
+# Showcase and portfolio images
+/showcase/*
+  cache-control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Icons and logos
+/*.png
+  cache-control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.svg
+  cache-control: public, max-age=604800, stale-while-revalidate=86400
+
+/favicon.ico
+  cache-control: public, max-age=604800, stale-while-revalidate=86400

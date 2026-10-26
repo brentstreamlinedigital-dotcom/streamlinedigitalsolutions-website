@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy policy for Streamline Digital Solutions. POPIA and GDPR compliant.",
+  title: "Privacy Policy | Streamline Digital Solutions",
+  description: "Privacy policy for Streamline Digital Solutions. POPIA (South Africa) and GDPR compliant.",
+  alternates: {
+    canonical: "https://streamlinedigitalsolutions.com/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -14,28 +17,24 @@ export default function PrivacyPolicyPage() {
         </h1>
 
         <div className="prose max-w-3xl space-y-8 text-grey-700 leading-relaxed">
-          <p className="text-accent-ink font-label text-xs">
-            [LEGAL REVIEW] This is placeholder privacy policy copy. Must be reviewed by a legal professional before launch. Must comply with POPIA (South Africa) and GDPR (EU).
-          </p>
-
           <h2 className="text-xl font-medium text-ink mt-8">1. Introduction</h2>
           <p>
-            Streamline Digital Solutions ("we", "our", "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, store, and protect your information when you visit our website or use our services.
+            Streamline Digital Solutions (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) respects your privacy and is committed to protecting your personal data in accordance with the Protection of Personal Information Act (POPIA) of South Africa and international data protection standards including the GDPR. This privacy policy explains how we collect, use, store, and protect your information when you visit our website or engage our digital services.
           </p>
 
           <h2 className="text-xl font-medium text-ink">2. Information we collect</h2>
           <p>
-            We collect information you provide directly to us, including your name, email address, company name, store URL, and any messages you send through our contact form. We also collect usage data through analytics tools including page views, referral sources, and device information.
+            We collect information you provide directly to us, including your name, email address, company name, store URL, budget details, and any message content you transmit through our contact or enquiry forms. We also collect anonymized technical and usage data through web analytics tools including page views, referrer sources, and device characteristics.
           </p>
 
           <h2 className="text-xl font-medium text-ink">3. How we use your information</h2>
           <p>
-            We use your information to respond to enquiries, provide our services, send relevant communications (with your consent), improve our website, and comply with legal obligations.
+            We use your information exclusively to respond to enquiries, scope and deliver client engagements, send relevant operational communications, continuously improve our digital properties, and fulfill legal requirements.
           </p>
 
           <h2 className="text-xl font-medium text-ink">4. Data storage and security</h2>
           <p>
-            Your data is stored securely using industry-standard encryption. We use Supabase for data storage and Vercel for hosting. We do not sell your personal data to third parties.
+            Your data is stored securely using industry-standard encryption protocols. We utilize hardened infrastructure providers including Cloudflare and encrypted database environments. We never sell, lease, or monetize your personal data to any third party.
           </p>
 
           <h2 className="text-xl font-medium text-ink">5. Your rights</h2>

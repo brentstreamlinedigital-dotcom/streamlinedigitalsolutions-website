@@ -22,9 +22,11 @@ export default function Accordion({ items, className = "" }: AccordionProps) {
         return (
           <div key={i} className="py-6 md:py-8">
             <button
+              id={`faq-button-${i}`}
               onClick={() => setOpenIndex(isOpen ? null : i)}
-              className="w-full flex items-start justify-between gap-4 text-left group"
+              className="w-full flex items-start justify-between gap-4 text-left group cursor-pointer"
               aria-expanded={isOpen}
+              aria-controls={`faq-panel-${i}`}
             >
               <span className="text-lg md:text-xl lg:text-2xl font-medium pr-4">
                 {item.question}
@@ -36,12 +38,16 @@ export default function Accordion({ items, className = "" }: AccordionProps) {
                   transition-all duration-300
                   ${isOpen ? "bg-accent text-ink border-accent rotate-0" : "rotate-0"}
                 `}
+                aria-hidden="true"
               >
                 {isOpen ? "×" : "+"}
               </span>
             </button>
 
             <div
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-button-${i}`}
               className="overflow-hidden transition-all duration-500"
               style={{
                 maxHeight: isOpen ? "500px" : "0px",
