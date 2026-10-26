@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Streamline Digital Solutions — Official Website
 
-## Getting Started
+> **The Ecommerce Growth Engine.**  
+> Built in Cape Town, scaling online stores worldwide. We build, market and automate ecommerce brands with senior strategy and AI-accelerated delivery.
 
-First, run the development server:
+---
 
+## 🛠 Tech Stack
+
+- **Framework:** [Next.js 16 (App Router)](https://nextjs.org) with React 19 & Turbopack
+- **Language:** TypeScript (strict mode)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com) with bespoke design tokens and CSS custom variables
+- **Motion & Smooth Scroll:** [GSAP](https://greensock.com) & ScrollTrigger, [Lenis](https://lenis.darkroom.engineering) smooth scrolling
+- **Canvas Visuals:** HTML5 2D Canvas dot-matrix particle field and animated ASCII data ticker
+- **Database & Auth:** [Supabase](https://supabase.com) (PostgreSQL tables: `leads`, `subscribers` with RLS)
+- **Email Delivery:** [Resend API](https://resend.com)
+- **Validation:** [Zod](https://zod.dev) schema validation
+- **Deployment:** [Vercel](https://vercel.com)
+
+---
+
+## 🎨 Brand Design Tokens
+
+| Token | Hex / Value | Usage |
+|---|---|---|
+| **Accent** | `#01CED1` | Streamline Teal (fills, active badges, text on dark) |
+| **Accent-Ink** | `#00737A` | Deep Teal (accent text on light paper backgrounds for WCAG AA compliance) |
+| **Accent Hover** | `#00B5B8` | Interactive hover states |
+| **Ink** | `#0B0F10` | Deep rich black / dark background |
+| **Paper** | `#EFF2F2` | Clean neutral light surface |
+| **Card** | `#F8FAFA` | Elevated card background |
+| **Display / Body** | `General Sans` | Fontshare typography self-hosted |
+| **Labels / Monospace** | `JetBrains Mono` | Uppercase eyebrow labels, metrics, code stamps |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- Node.js 20.9.0 or higher
+- npm 9+ or pnpm 8+
+
+### 2. Environment Setup
+Copy the example environment configuration:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Populate the variables:
+```ini
+# Supabase
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Resend
+RESEND_API_KEY=re_xxxxxxxxxxxx
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Public config
+NEXT_PUBLIC_CONTACT_EMAIL=hello@streamlinedigitalsolutions.com
+NEXT_PUBLIC_BOOKING_URL=https://calendly.com/streamline-digital
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
 
-## Learn More
+### 3. Database Migration
+Run the SQL script located in `supabase/schema.sql` inside your Supabase project's SQL editor to provision the `leads` and `subscribers` tables with Row Level Security enabled.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Running Locally
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🏗 Production Build & Validation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
+Generates an optimized static and SSR bundle with zero TypeScript warnings or errors.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚢 Deployment (Vercel)
+
+1. Push your repository to GitHub.
+2. Import the project into your Vercel Dashboard.
+3. Configure the environment variables matching `.env.example`.
+4. Deploy with standard Next.js defaults.
+
+---
+
+## ⌨️ Easter Eggs & Controls
+- Press **Cmd + G** (or **Ctrl + G**) anywhere on the site to toggle the agency 12-column alignment grid.

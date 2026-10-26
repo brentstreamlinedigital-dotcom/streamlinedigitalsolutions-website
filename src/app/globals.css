@@ -1,26 +1,288 @@
 @import "tailwindcss";
 
+/* ============================================================
+   STREAMLINE DIGITAL SOLUTIONS - Design Tokens
+   ============================================================ */
+
+/* General Sans: self-hosted from Fontshare (free) */
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ---- Theme (CSS custom properties) ---- */
+
+@theme {
+  --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Streamline brand palette */
+  --color-accent: #01CED1;
+  --color-accent-ink: #00737A;
+  --color-accent-hover: #00B5B8;
+  --color-ink: #0B0F10;
+  --color-paper: #EFF2F2;
+  --color-card: #F8FAFA;
+  --color-grey-700: #333333;
+  --color-grey-500: #696869;
+  --color-grey-400: #818081;
+
+  /* Easing */
+  --ease-power2-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-power3-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-power3-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-power4-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* Layout */
+  --spacing-header: 64px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme (default) */
+  --color-bg: var(--color-paper);
+  --color-fg: var(--color-ink);
+  --color-fg-muted: var(--color-grey-500);
+  --color-brand: var(--color-accent);
+  --color-brand-ink: var(--color-accent-ink);
+  --color-surface: var(--color-card);
+  --color-border: rgba(11, 15, 16, 0.1);
+
+  --site-grid-margin: clamp(1rem, 4vw, 3rem);
+  --site-header-height: 64px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark sections/pages */
+[data-theme="dark"] {
+  --color-bg: var(--color-ink);
+  --color-fg: var(--color-paper);
+  --color-fg-muted: var(--color-grey-400);
+  --color-brand: var(--color-accent);
+  --color-brand-ink: var(--color-accent);
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(239, 242, 242, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---- Base ---- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
 }
+
+/* ---- Typography utilities ---- */
+
+.font-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Grid container (12-column responsive layout) ---- */
+
+.grid-container {
+  width: 100%;
+  padding-inline: var(--site-grid-margin);
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid-layout {
+    gap: 1.5rem;
+  }
+}
+
+/* ---- Section theming ---- */
+
+section[data-theme="dark"] {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+section[data-theme="light"] {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* ---- Selection ---- */
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-ink);
+}
+
+/* ---- Smooth scroll (Lenis overrides) ---- */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Blinking caret for SectionHeading ---- */
+
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.caret-blink {
+  animation: blink-caret 1s step-end infinite;
+}
+
+/* ---- Slide-in for letters ---- */
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0%); }
+}
+
+.letter-animated {
+  animation: slideInFromBottom 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(110%);
+}
+
+/* ---- Grid overlay (Cmd+G) ---- */
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  padding-inline: var(--site-grid-margin);
+}
+
+.grid-overlay .grid-layout > div {
+  background-color: rgba(1, 206, 209, 0.06);
+  height: 100%;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---- Sequential reading-order headline shimmer ---- */
+@keyframes headlineSweepLine1 {
+  0% {
+    background-position: 130% 0;
+  }
+  36% {
+    background-position: -30% 0;
+  }
+  36.001%, 100% {
+    background-position: 130% 0;
+  }
+}
+
+@keyframes headlineSweepLine2 {
+  0%, 26% {
+    background-position: 130% 0;
+  }
+  62% {
+    background-position: -30% 0;
+  }
+  62.001%, 100% {
+    background-position: 130% 0;
+  }
+}
+
+.headline-sweep-line1,
+.headline-sweep-line2 {
+  background: linear-gradient(
+    90deg,
+    #EFF2F2 0%,
+    #EFF2F2 36%,
+    #C2F4F2 45%,
+    #7CE4E0 50%,
+    #C2F4F2 55%,
+    #EFF2F2 64%,
+    #EFF2F2 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.headline-sweep-line1 {
+  animation: headlineSweepLine1 8.2s cubic-bezier(0.3, 0, 0.25, 1) infinite;
+}
+
+.headline-sweep-line2 {
+  animation: headlineSweepLine2 8.2s cubic-bezier(0.3, 0, 0.25, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headline-sweep-line1,
+  .headline-sweep-line2 {
+    animation: none;
+    background-position: 130% 0;
+  }
+}
+
