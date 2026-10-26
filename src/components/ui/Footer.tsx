@@ -46,7 +46,7 @@ export default function Footer() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="bg-transparent border-b border-paper/20 px-0 py-3 text-sm focus:border-accent focus:outline-none transition-colors flex-1"
+                className="bg-transparent border-b border-paper/20 px-0 py-3 text-base sm:text-sm focus:border-accent focus:outline-none transition-colors flex-1"
               />
               <input
                 type="email"
@@ -54,7 +54,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-transparent border-b border-paper/20 px-0 py-3 text-sm focus:border-accent focus:outline-none transition-colors flex-1"
+                className="bg-transparent border-b border-paper/20 px-0 py-3 text-base sm:text-sm focus:border-accent focus:outline-none transition-colors flex-1"
               />
               <button
                 type="submit"
