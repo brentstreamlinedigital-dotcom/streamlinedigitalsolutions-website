@@ -93,5 +93,35 @@ Generates an optimized static and SSR bundle with zero TypeScript warnings or er
 
 ---
 
+---
+
+## 🤖 Automated Daily SEO Blog Engine
+
+The site includes an autonomous daily SEO content generation and publishing pipeline powered by Anthropic Claude:
+
+- **Schedule**: Automatically runs every morning at 06:00 UTC via GitHub Actions (`.github/workflows/daily-seo-blog.yml`).
+- **Topic Queue**: Selects the next unwritten commercial SEO topic from `scripts/seo-topic-queue.ts`.
+- **Validation**: Enforces strict Zod schema compliance for rich technical structures (benchmarks, takeaways, callouts, and conversion CTAs).
+- **Auto-Publish**: Automatically commits new articles to `src/content/blog.ts`, updates `public/llms.txt`, and pushes to `main` for instant Cloudflare deployment.
+
+### Setup Instructions
+1. In your GitHub repository, navigate to **Settings** → **Secrets and variables** → **Actions**.
+2. Click **New repository secret**.
+3. Name: `ANTHROPIC_API_KEY`
+4. Value: Your Anthropic API key (`sk-ant-...`).
+5. (Optional) Run manually anytime by clicking **Actions** → **Daily Automated SEO Blog Publisher** → **Run workflow**.
+
+### Running Locally
+```bash
+# Preview generation without committing
+ANTHROPIC_API_KEY="sk-ant-..." npm run blog:dry-run
+
+# Generate and publish today's post locally
+ANTHROPIC_API_KEY="sk-ant-..." npm run blog:generate
+```
+
+---
+
 ## ⌨️ Easter Eggs & Controls
 - Press **Cmd + G** (or **Ctrl + G**) anywhere on the site to toggle the agency 12-column alignment grid.
+

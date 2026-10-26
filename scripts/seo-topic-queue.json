@@ -1,0 +1,212 @@
+[
+  {
+    "id": "shopify-core-web-vitals-2026",
+    "title": "How to Pass Google Core Web Vitals on Shopify Plus: 2026 Engineering Guide",
+    "slug": "shopify-plus-core-web-vitals-engineering-guide",
+    "category": "ARCHITECTURE",
+    "targetKeyword": "pass core web vitals shopify plus",
+    "secondaryKeywords": [
+      "shopify lcp optimization",
+      "shopify inp fix",
+      "shopify theme speed engineering",
+      "eliminate render blocking resources shopify"
+    ],
+    "intent": "High-growth Shopify Plus brand failing Google CWV and suffering mobile search rank drops.",
+    "keyAngles": [
+      "Why standard theme speed apps make Core Web Vitals worse by adding secondary JavaScript execution",
+      "LCP breakdown: Preloading hero images with fetchpriority='high' and inlining critical CSS above the fold",
+      "INP (Interaction to Next Paint) masterclass: Debouncing variant selection and offloading cart drawer logic",
+      "Real benchmark comparison: 2.8s LCP down to 0.72s LCP on a 4,000-SKU store"
+    ],
+    "ctaAngle": "Book a 15-minute Store Speed & CWV Architecture Audit with Streamline."
+  },
+  {
+    "id": "mobile-cro-friction-points",
+    "title": "Why Your Mobile Ecommerce Conversion Rate is Below 2%: 9 Friction Points to Kill",
+    "slug": "mobile-ecommerce-conversion-rate-friction-points",
+    "category": "CRO & CONVERSION",
+    "targetKeyword": "improve mobile ecommerce conversion rate",
+    "secondaryKeywords": [
+      "mobile cvr benchmark dtc",
+      "shopify mobile checkout optimization",
+      "sticky add to cart conversion impact",
+      "mobile cart abandonment reduction"
+    ],
+    "intent": "DTC brand founder spending heavily on Meta/TikTok ads with high mobile traffic but poor conversion.",
+    "keyAngles": [
+      "The 16px iOS input zoom bug that causes layout jumping and checkout abandonment",
+      "Sticky Add-to-Cart bar with dynamic variant memory vs. intrusive bottom sheets",
+      "One-click accelerated checkouts (Shop Pay, Apple Pay) placement above standard forms",
+      "Why accordion menus outperform infinite scroll on mobile Product Detail Pages (PDPs)"
+    ],
+    "ctaAngle": "Request a Streamline Mobile Conversion Rate Teardown for your store."
+  },
+  {
+    "id": "ai-retention-workflows-ecommerce",
+    "title": "Autonomous Retention: How AI Workflows Cut Churn and Lift Repeat Purchases by 34%",
+    "slug": "autonomous-ai-retention-workflows-ecommerce",
+    "category": "AI & AUTOMATION",
+    "targetKeyword": "ai customer retention ecommerce",
+    "secondaryKeywords": [
+      "automated replenishment flows shopify",
+      "llm churn prediction klaviyo",
+      "ai loyalty automation dtc",
+      "post purchase automation engine"
+    ],
+    "intent": "Ecommerce COO / Retention Director wanting to automate repeat orders without hiring a large team.",
+    "keyAngles": [
+      "Moving beyond static 30-day replenishment emails to AI consumption cycle prediction",
+      "Autonomous sentiment analysis on review submissions triggering instant retention discounts",
+      "Integrating Claude API with Klaviyo webhooks to generate hyper-personalized win-back copy",
+      "Case data: 34% lift in second-order conversion rate over 90 days"
+    ],
+    "ctaAngle": "Explore custom AI retention automations built for your DTC tech stack."
+  },
+  {
+    "id": "shopify-checkout-extensibility-migration",
+    "title": "Shopify Checkout Extensibility: The Complete Architecture & Migration Playbook",
+    "slug": "shopify-checkout-extensibility-architecture-playbook",
+    "category": "ARCHITECTURE",
+    "targetKeyword": "shopify checkout extensibility migration",
+    "secondaryKeywords": [
+      "checkout liquid deprecation shopify",
+      "checkout ui extensions custom pixels",
+      "post purchase upsells checkout extensibility",
+      "shopify plus checkout customization"
+    ],
+    "intent": "Shopify Plus brand migrating off deprecated checkout.liquid needing enterprise-level customization.",
+    "keyAngles": [
+      "Why Checkout Extensibility outperforms legacy checkout.liquid in security and conversion speed",
+      "Building custom UI Extensions: Dynamic address validation, free-shipping progress bars, and high-AOV upsells",
+      "Handling Custom Web Pixels for Meta CAPI and Google Ads without client-side cookie degradation",
+      "Step-by-step testing sandbox setup to avoid live transaction disruptions"
+    ],
+    "ctaAngle": "Hire Streamline to engineer your custom Shopify Checkout Extensibility upgrade."
+  },
+  {
+    "id": "high-aov-cart-drawer-engineering",
+    "title": "Engineering the Perfect Slideout Cart: How Custom Drawers Drive 22% Higher AOV",
+    "slug": "engineering-high-aov-slideout-cart-drawer",
+    "category": "CRO & CONVERSION",
+    "targetKeyword": "high aov cart drawer shopify",
+    "secondaryKeywords": [
+      "cart drawer tiered progress bar",
+      "in cart cross sell conversion rate",
+      "ajax cart drawer optimization",
+      "shopify slideout cart speed"
+    ],
+    "intent": "Brand looking to increase Average Order Value without discounting margins.",
+    "keyAngles": [
+      "Tiered free-shipping and unlockable gift progress bars: Psychological triggers and threshold math",
+      "One-click 1-product upsell algorithms based on current cart contents",
+      "Eliminating layout shift (CLS) during asynchronous cart line-item recalculations",
+      "Shop Pay / Apple Pay direct integration inside the drawer before visiting checkout"
+    ],
+    "ctaAngle": "Get a custom, high-converting AJAX cart drawer engineered for your Shopify theme."
+  },
+  {
+    "id": "autonomous-inventory-ai-workflows",
+    "title": "Zero-Stockouts: Building Autonomous AI Inventory Forecasting for High-SKU Stores",
+    "slug": "autonomous-ai-inventory-forecasting-ecommerce",
+    "category": "AI & AUTOMATION",
+    "targetKeyword": "ai inventory forecasting ecommerce",
+    "secondaryKeywords": [
+      "automated inventory reordering shopify",
+      "ai stockout prediction dtc",
+      "supply chain automation n8n",
+      "shopify erp automated sync"
+    ],
+    "intent": "Scaling omnichannel retailer struggling with seasonal stockouts and warehouse tie-ups.",
+    "keyAngles": [
+      "Connecting Shopify order velocity data to external supply lead-time APIs via n8n",
+      "Multi-variable demand forecasting: Incorporating ad spend surges and seasonal seasonality curves",
+      "Automated supplier purchase order generation with zero manual data entry",
+      "ROI model: Slashing holding costs while eliminating out-of-stock lost revenue"
+    ],
+    "ctaAngle": "Schedule an AI Automation Strategy Session with our engineering team."
+  },
+  {
+    "id": "server-side-tracking-meta-capi",
+    "title": "Server-Side Tracking Masterclass: Meta CAPI & GA4 Without Client Pixel Signal Loss",
+    "slug": "server-side-tracking-meta-capi-ga4-guide",
+    "category": "ARCHITECTURE",
+    "targetKeyword": "server side tracking shopify meta capi",
+    "secondaryKeywords": [
+      "first party data collection ecommerce",
+      "meta conversions api cloudflare worker",
+      "eliminate ios 14 tracking loss",
+      "ga4 server side tagging setup"
+    ],
+    "intent": "Media buyer / DTC founder losing ROAS attribution due to ad blockers and browser privacy restrictions.",
+    "keyAngles": [
+      "Why client-side browser pixels lose 20-35% of conversion events on Safari and Brave",
+      "Deploying Meta Conversions API (CAPI) on Cloudflare Workers for sub-millisecond event dispatch",
+      "Event deduplication: Matching event_id between browser and server without double-counting revenue",
+      "Result: Lower customer acquisition costs (CAC) through restored algorithmic attribution signal"
+    ],
+    "ctaAngle": "Have Streamline audit and deploy bulletproof server-side tracking across your funnel."
+  },
+  {
+    "id": "subscription-retention-funnels",
+    "title": "Beyond the 15% Discount: Engineering Subscription Funnels That Retain for 12+ Months",
+    "slug": "subscription-ecommerce-retention-funnel-engineering",
+    "category": "CRO & CONVERSION",
+    "targetKeyword": "subscription ecommerce retention strategies",
+    "secondaryKeywords": [
+      "recharge shopify retention optimization",
+      "subscription churn reduction dtc",
+      "build a box subscription architecture",
+      "customer portal redesign shopify"
+    ],
+    "intent": "Subscription brand facing month-3 churn cliff and declining subscriber lifetime value (LTV).",
+    "keyAngles": [
+      "The 'Cancel Flow' paradox: Replacing cancellation with customizable pause, skip, and frequency options",
+      "Custom 'Build-a-Box' bundles engineered on Next.js to maximize initial perceived value",
+      "SMS-based 1-click subscription management (zero login friction)",
+      "Financial impact: Extending average subscriber lifespan from 2.8 months to 7.4 months"
+    ],
+    "ctaAngle": "Revamp your subscription architecture with Streamline's conversion engineers."
+  },
+  {
+    "id": "ai-customer-support-gorgias",
+    "title": "How We Cut Support Ticket Volume by 62% Using Claude AI & Shopify Webhooks",
+    "slug": "cut-support-tickets-claude-ai-shopify",
+    "category": "AI & AUTOMATION",
+    "targetKeyword": "ai customer support shopify automation",
+    "secondaryKeywords": [
+      "automated order status returns bot",
+      "claude ai gorgias integration",
+      "ecommerce support ticket deflection",
+      "autonomous refund resolution dtc"
+    ],
+    "intent": "Growing brand whose customer support team is overwhelmed by repetitive WISMO ('Where is my order?') tickets.",
+    "keyAngles": [
+      "Architecture of an autonomous support agent: Claude Sonnet + Shopify Admin API + Gorgias",
+      "Handling complex queries: Exchanges, address corrections, and tracking lookups in under 10 seconds",
+      "Escalation guardrails: Identifying angry or VIP customers for instant human handoff",
+      "Operating cost savings: Saving $4,000+/month in offshore support overhead while improving CSAT"
+    ],
+    "ctaAngle": "Deploy custom AI support agents tailored to your brand voice and store backend."
+  },
+  {
+    "id": "shopify-hydrogen-remix-vs-nextjs-headless",
+    "title": "Shopify Hydrogen (Remix) vs. Next.js App Router: Which Headless Stack Wins in 2026?",
+    "slug": "shopify-hydrogen-remix-vs-nextjs-headless",
+    "category": "ARCHITECTURE",
+    "targetKeyword": "shopify hydrogen vs nextjs headless",
+    "secondaryKeywords": [
+      "shopify oxygen hosting vs cloudflare vercel",
+      "headless shopify framework comparison",
+      "hydrogen remix dtc performance",
+      "nextjs storefront api speed"
+    ],
+    "intent": "Technical CTO or agency evaluating whether to adopt Shopify's first-party Hydrogen or Next.js App Router.",
+    "keyAngles": [
+      "Developer experience: React Server Components (RSC) in Next.js vs. Remix loader/action paradigm",
+      "Hosting & Edge: Shopify Oxygen infrastructure vs. Cloudflare Workers / Vercel Edge Networks",
+      "Third-party CMS integration (Sanity, Contentful) compatibility benchmarks",
+      "Which stack provides faster Time-to-First-Byte (TTFB) and lower maintenance overhead"
+    ],
+    "ctaAngle": "Consult with Streamline on your brand's headless architecture roadmap."
+  }
+]

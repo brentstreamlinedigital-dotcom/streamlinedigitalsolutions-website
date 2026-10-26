@@ -1,0 +1,78 @@
+name: Daily Automated SEO Blog Publisher
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC (08:00 AM SAST / Cape Town)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      topic_id:
+        description: 'Specific Topic ID from queue (leave blank for automatic next queue item)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry Run (generates article and logs without committing)'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish-daily-seo-article:
+    name: Generate & Publish Daily SEO Blog Post
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate Daily SEO Post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022' }}
+        run: |
+          ARGS=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          if [ -n "${{ inputs.topic_id }}" ]; then
+            ARGS="$ARGS --topic ${{ inputs.topic_id }}"
+          fi
+
+          node --experimental-strip-types scripts/generate-daily-post.ts $ARGS
+
+      - name: Commit and Push New Article to Main
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          # Check if content changed
+          if git diff --quiet src/content/blog.ts; then
+            echo "No changes detected. Skipping commit."
+            exit 0
+          fi
+
+          # Extract the title of the newest post
+          NEW_TITLE=$(node -e '
+            const fs = require("fs");
+            const content = fs.readFileSync("src/content/blog.ts", "utf8");
+            const match = content.match(/title:\s*"([^"]+)"/);
+            console.log(match ? match[1] : "New Article");
+          ')
+
+          echo "Committing new article: $NEW_TITLE"
+
+          git config user.name "Streamline AI Publisher"
+          git config user.email "bot@streamlinedigitalsolutions.com"
+
+          git add src/content/blog.ts public/llms.txt
+          git commit -m "content(blog): publish daily SEO article: ${NEW_TITLE}"
+          git push origin main
